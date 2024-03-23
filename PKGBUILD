@@ -1,3 +1,7 @@
+# SPDX-License-Identifier: AGPL-3.0
+#
+# Maintainer: Truocolo <truocolo@aol.com>
+# Maintainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Maintainer: Rémy Oudompheng <remy@archlinux.org>
 
@@ -35,8 +39,26 @@ check() {
 
 package() {
   cd ${_pkgname}-${pkgver}
-  python -m installer --destdir="${pkgdir}" dist/*.whl
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm 644 README.rst CHANGES -t "${pkgdir}/usr/share/doc/${pkgname}"
-  cp -r examples "${pkgdir}/usr/share/doc/${pkgname}"
+  python \
+    -m \
+      installer \
+      --destdir="${pkgdir}" \
+        dist/*.whl
+  install \
+    -Dm 644 \
+    LICENSE \
+    -t \
+    "${pkgdir}/usr/share/licenses/${pkgname}"
+  install \
+    -Dm 644 \
+    README.rst \
+    CHANGES \
+    -t \
+    "${pkgdir}/usr/share/doc/${pkgname}"
+  cp \
+    -r \
+    examples \
+    "${pkgdir}/usr/share/doc/${pkgname}"
 }
+
+# vim:set sw=2 sts=-1 et:
